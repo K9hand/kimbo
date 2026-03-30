@@ -153,6 +153,8 @@ button {
 .info-card p,
 .footer-copy {
   color: var(--color-muted);
+  margin-top: var(--space-2);
+  margin-bottom: 0;
 }
 
 .eyebrow,
@@ -227,36 +229,14 @@ button {
 .brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.9rem;
   color: var(--color-primary-deep);
 }
 
-.brand-mark {
-  display: grid;
-  place-items: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 0.85rem;
-  background:
-    linear-gradient(135deg, rgba(87, 184, 106, 0.95), rgba(14, 124, 134, 0.95));
-  color: var(--color-surface);
-  font-weight: 800;
-  box-shadow: 0 10px 24px rgba(14, 124, 134, 0.25);
-}
-
-.brand-text {
-  display: grid;
-  gap: 0.05rem;
-  line-height: 1.1;
-}
-
-.brand-text strong {
-  font-size: 1rem;
-}
-
-.brand-text span {
-  color: var(--color-muted);
-  font-size: 0.86rem;
+.brand-logo {
+  height: 52px;
+  width: auto;
+  border-radius: var(--radius-sm);
+  display: block;
 }
 
 .site-nav {
@@ -435,6 +415,7 @@ button {
   background: rgba(255, 255, 255, 0.88);
   border: 1px solid rgba(12, 49, 80, 0.08);
   box-shadow: 0 12px 28px rgba(12, 49, 80, 0.08);
+  overflow: hidden;
 }
 
 .hero-metrics span {
@@ -442,8 +423,10 @@ button {
   color: var(--color-teal);
   font-size: 0.82rem;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.06em;
   font-weight: 700;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 .hero-metrics strong {
@@ -476,6 +459,10 @@ button {
 
 .reasons-grid {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.contact-cards {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .info-card,
@@ -524,8 +511,7 @@ button {
 .reason-card:hover,
 .info-card:hover,
 .industry-card:hover,
-.contact-card:hover,
-.contact-form:hover {
+.contact-card:hover {
   transform: translateY(-2px);
 }
 
@@ -542,8 +528,7 @@ button {
 .reason-card:hover,
 .info-card:hover,
 .industry-card:hover,
-.contact-card:hover,
-.contact-form:hover {
+.contact-card:hover {
   box-shadow: 0 28px 56px rgba(8, 24, 39, 0.14);
   border-color: rgba(14, 124, 134, 0.18);
 }
@@ -587,6 +572,70 @@ button {
   margin: 0;
   color: var(--color-primary);
   font-weight: 600;
+}
+
+.contact-card a {
+  color: var(--color-primary);
+  font-weight: 600;
+  transition: color 180ms ease;
+}
+
+.contact-card a:hover {
+  color: var(--color-teal);
+}
+
+/* Directors */
+.directors-block {
+  margin-top: var(--space-5);
+}
+
+.directors-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  margin-top: var(--space-3);
+}
+
+.director-card {
+  padding: 1.6rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(12, 49, 80, 0.08);
+  box-shadow: var(--color-shadow);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.director-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-teal), var(--color-green));
+  opacity: 0.9;
+}
+
+.director-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 28px 56px rgba(8, 24, 39, 0.14);
+  border-color: rgba(14, 124, 134, 0.18);
+}
+
+.director-card h3 {
+  margin: 0 0 0.35rem;
+  color: var(--color-primary-deep);
+  line-height: 1.2;
+}
+
+.director-card p {
+  margin: 0;
+  color: var(--color-teal);
+  font-size: 0.83rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
 }
 
 .contact-form {
@@ -671,6 +720,12 @@ button {
 
 .footer-nav a {
   color: rgba(255, 255, 255, 0.8);
+  transition: color 180ms ease;
+}
+
+.footer-nav a:hover,
+.footer-nav a:focus-visible {
+  color: #ffffff;
 }
 
 @media (min-width: 780px) {
@@ -731,7 +786,9 @@ button {
   .services-grid,
   .industry-grid,
   .reasons-grid,
-  .about-grid {
+  .about-grid,
+  .directors-grid,
+  .contact-cards {
     grid-template-columns: 1fr;
   }
 
@@ -753,6 +810,10 @@ button {
 
   .header-inner {
     min-height: 4.5rem;
+  }
+
+  .brand-logo {
+    height: 40px;
   }
 
   .hero h1 {
